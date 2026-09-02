@@ -3,7 +3,7 @@
 /*
  * This is the project's atoum configuration file.
  * You can find more information about atoum configuration at:
- * https://github.com/atoum/atoum
+ * https://github.com/AtoumNext/atoum
  */
 
 use atoum\atoum;

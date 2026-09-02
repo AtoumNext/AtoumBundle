@@ -12,15 +12,15 @@ use Symfony\Bundle\FrameworkBundle\KernelBrowser;
  *
  * @author Stephane PY <py.stephane1@gmail.com>
  *
- * @method WebTestCase                                request(array $options = array(), array $server = array(), array $cookies = array())
- * @method \atoum\AtoumBundle\Test\Asserters\Response get($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response head($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response post($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response put($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response patch($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response delete($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Response options($path, array $parameters = array(), array $files = array(), array $server = array(), $content = null, $changeHistory = true)
- * @method \atoum\AtoumBundle\Test\Asserters\Crawler  crawler($strict = false)
+ * @method WebTestCase                                request(array<string, mixed> $options = [], array<string, mixed> $server = [], array<string, mixed> $cookies = [])
+ * @method \atoum\AtoumBundle\Test\Asserters\Response get(string $path, array<string, mixed> $parameters = [], array<string, mixed> $files = [], array<string, mixed> $server = [], mixed $content = null, bool $changeHistory = true)
+ * @method \atoum\AtoumBundle\Test\Asserters\Response head(string $path, array<string, mixed> $parameters = [], array<string, mixed> $files = [], array<string, mixed> $server = [], mixed $content = null, bool $changeHistory = true)
+ * @method \atoum\AtoumBundle\Test\Asserters\Response post(string $path, array<string, mixed> $parameters = [], array<string, mixed> $files = [], array<string, mixed> $server = [], mixed $content = null, bool $changeHistory = true)
+ * @method \atoum\AtoumBundle\Test\Asserters\Response put(string $path, array<string, mixed> $parameters = [], array<string, mixed> $files = [], array<string, mixed> $server = [], mixed $content = null, bool $changeHistory = true)
+ * @method \atoum\AtoumBundle\Test\Asserters\Response patch(string $path, array<string, mixed> $parameters = [], array<string, mixed> $files = [], array<string, mixed> $server = [], mixed $content = null, bool $changeHistory = true)
+ * @method \atoum\AtoumBundle\Test\Asserters\Response delete(string $path, array<string, mixed> $parameters = [], array<string, mixed> $files = [], array<string, mixed> $server = [], mixed $content = null, bool $changeHistory = true)
+ * @method \atoum\AtoumBundle\Test\Asserters\Response options(string $path, array<string, mixed> $parameters = [], array<string, mixed> $files = [], array<string, mixed> $server = [], mixed $content = null, bool $changeHistory = true)
+ * @method \atoum\AtoumBundle\Test\Asserters\Crawler  crawler(bool $strict = false)
  */
 abstract class WebTestCase extends Test
 {
@@ -61,10 +61,7 @@ abstract class WebTestCase extends Test
                 'crawler',
                 function ($strict = false) use (&$crawler, $generator, $test) {
                     if (null === $crawler) {
-                        throw new \LogicException(
-                            'You must make a request before accessing the crawler. ' .
-                            'Use $this->request()->get("/path") or similar methods first.'
-                        );
+                        throw new \LogicException('You must make a request before accessing the crawler. Use $this->request()->get("/path") or similar methods first.');
                     }
 
                     // Note: In Symfony 7+, CSS selector HTML mode is handled automatically
@@ -82,7 +79,7 @@ abstract class WebTestCase extends Test
      * @param \Symfony\Component\DomCrawler\Crawler|null $crawler
      * @param string                                     $method
      *
-     * @return callable
+     * @return \Closure
      */
     protected function getSendRequestHandler(&$client, &$crawler, $method)
     {
@@ -94,9 +91,9 @@ abstract class WebTestCase extends Test
                 throw new \LogicException('You must call request() before making HTTP requests.');
             }
 
-            /** 
+            /**
              * @var KernelBrowser $client
-             * Note: request() and getResponse() are available from AbstractBrowser parent class
+             *                    Note: request() and getResponse() are available from AbstractBrowser parent class
              */
             // @phpstan-ignore-next-line
             $crawler = $client->request($method, $path, $parameters, $files, $server, $content, $changeHistory);
@@ -111,7 +108,7 @@ abstract class WebTestCase extends Test
      *
      * @param array<string, mixed> $options An array of options to pass to the createKernel class
      * @param array<string, mixed> $server  An array of server parameters
-     * @param array<mixed> $cookies An array of Symfony\Component\BrowserKit\Cookie
+     * @param array<mixed>         $cookies An array of Symfony\Component\BrowserKit\Cookie
      *
      * @return KernelBrowser A KernelBrowser instance
      */
@@ -133,13 +130,13 @@ abstract class WebTestCase extends Test
         if (!$client instanceof KernelBrowser) {
             throw new \LogicException('Service "test.client" must return a KernelBrowser instance.');
         }
-        
+
         // setServerParameters and getCookieJar are from AbstractBrowser parent class
-        /** @phpstan-ignore-next-line */
+        /* @phpstan-ignore-next-line */
         $client->setServerParameters($server);
 
         foreach ($cookies as $cookie) {
-            /** @phpstan-ignore-next-line */
+            /* @phpstan-ignore-next-line */
             $client->getCookieJar()->set($cookie);
         }
 

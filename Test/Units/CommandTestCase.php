@@ -19,7 +19,7 @@ class CommandTestCase extends Test
 
         // Create application
         $application = new Application($kernel);
-        $application->add($command);
+        $application->addCommand($command);
 
         // Get command name with fallback
         $commandName = $command->getName();

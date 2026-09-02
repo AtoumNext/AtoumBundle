@@ -42,7 +42,7 @@ class BundleDirectoriesResolverPass implements CompilerPassInterface
             if (!is_string($bundleClass)) {
                 throw new \LogicException('Parameter "atoum.configuration.bundle.class" must be a string.');
             }
-            
+
             $definition = new Definition(
                 $bundleClass,
                 [$bundleName, $directories],

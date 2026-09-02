@@ -18,7 +18,7 @@ NC='\033[0m' # No Color
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BUNDLE_DIR="$(dirname "$SCRIPT_DIR")"
 TEST_DIR="/tmp/atoum-bundle-recipe-test-$(date +%s)"
-RECIPE_VERSION="${1:-3.0}"
+RECIPE_VERSION="${1:-5.0}"
 
 echo -e "${BLUE}================================================${NC}"
 echo -e "${BLUE}AtoumBundle Recipe Testing Script${NC}"
@@ -84,7 +84,7 @@ print_success "Recipe endpoint configured"
 
 # Install the bundle
 print_status "Installing atoum-bundle with recipe..."
-composer require --dev atoum/atoum-bundle:@dev -vvv --no-interaction
+composer require --dev atoum-next/atoum-bundle:@dev -vvv --no-interaction
 print_success "Bundle installed"
 
 # Validation

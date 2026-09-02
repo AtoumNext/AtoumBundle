@@ -20,9 +20,9 @@ class Test extends atoum\test
                 ->object($object->setAssertionManager($manager))->isIdenticalTo($object)
                 ->mock($manager)
                     ->call('setHandler')->withArguments('faker')->once()
-            /** @var \atoum\AtoumBundle\Test\Units\Test $object */
+            /* @var \atoum\AtoumBundle\Test\Units\Test $object */
             ->if($object = new \mock\atoum\AtoumBundle\Test\Units\Test())
-            /** @var \Faker\Generator $generator */
+            /* @var \Faker\Generator $generator */
             ->and($this->calling($object)->getFaker = $generator = new \mock\Faker\Generator())
             ->and($this->calling($generator)->__call->doesNothing())
             ->then

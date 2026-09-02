@@ -24,13 +24,13 @@ class Runner extends BaseRunner
             }
         }
 
-        if (true === $this->cli->isTerminal()) {
+        if (true === $this->cli?->isTerminal()) {
             $php->addOption('--force-terminal');
         }
 
         $addScoreFile = false;
 
-        foreach ($this->argumentsParser->getValues() as $argument => $values) {
+        foreach (($this->argumentsParser?->getValues() ?? []) as $argument => $values) {
             switch ($argument) {
                 case '-sf':
                 case '--score-file':

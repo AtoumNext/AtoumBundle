@@ -25,7 +25,7 @@ class DOMNode
         if ($node instanceof \DOMNode) {
             return $node->nodeValue ?? '';
         }
-        
+
         return $node->text();
     }
 

@@ -1,9 +1,9 @@
 {
-    "name": "atoum/atoum-bundle",
+    "name": "atoum-next/atoum-bundle",
     "description": "Bundle around atoum unit testing framework",
     "type": "symfony-bundle",
-    "keywords": ["atoum", "test", "unit testing"],
-    "homepage": "https://github.com/atoum/AtoumBundle",
+    "keywords": ["atoum", "atoum-next", "test", "unit testing"],
+    "homepage": "https://github.com/AtoumNext/AtoumBundle",
     "license": "MIT",
     "authors": [
         {
@@ -12,26 +12,26 @@
         },
         {
             "name": "Community contributors",
-            "homepage": "https://github.com/atoum/AtoumBundle/graphs/contributors"
+            "homepage": "https://github.com/AtoumNext/AtoumBundle/graphs/contributors"
         }
     ],
     "require": {
-        "php": ">=8.1",
-        "symfony/framework-bundle": ">=7",
-        "symfony/console": ">=7",
-        "symfony/finder": ">=7",
-        "symfony/dom-crawler": ">=7",
-        "symfony/css-selector": ">=7",
-        "atoum/atoum": "^4.4.1",
+        "php": ">=8.2",
+        "symfony/framework-bundle": "^7.4 || ^8.0",
+        "symfony/console": "^7.4 || ^8.0",
+        "symfony/finder": "^7.4 || ^8.0",
+        "symfony/dom-crawler": "^7.4 || ^8.0",
+        "symfony/css-selector": "^7.4 || ^8.0",
+        "atoum-next/atoum": "^5.0",
         "fakerphp/faker": "^1.23",
         "ext-dom": "*"
     },
     "require-dev": {
-        "symfony/form": "7.*",
-        "phpstan/phpstan": "^1.12",
-        "phpstan/phpstan-symfony": "^1.4",
+        "symfony/form": "^7.4 || ^8.0",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-symfony": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.64",
-        "rector/rector": "^1.2",
+        "rector/rector": "^2.0",
         "atoum/stubs": "^2.6"
     },
     "autoload": {
@@ -54,11 +54,11 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.5-dev"
+            "dev-master": "5.x-dev"
         },
         "symfony": {
             "allow-contrib": true,
-            "require": ">=7"
+            "require": "^7.4 || ^8.0"
         }
     }
 }

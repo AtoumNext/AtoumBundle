@@ -4,25 +4,22 @@ declare(strict_types=1);
 
 namespace atoum\AtoumBundle\PHPStan;
 
-use PhpParser\Node\Expr\PropertyFetch;
+use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
-use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\Type;
-use PHPStan\Type\ObjectType;
-use PhpParser\Node\Expr\MethodCall;
 
 /**
- * Extension PHPStan pour gérer les propriétés et méthodes magiques d'atoum
- * 
+ * Extension PHPStan pour gérer les propriétés et méthodes magiques d'atoum.
+ *
  * Cette extension informe PHPStan que les méthodes comme `if()`, `then()`, `and()`, etc.
  * retournent l'instance courante pour permettre le chaînage fluent.
  */
 class AtoumDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtension
 {
     /**
-     * Méthodes magiques qui retournent $this pour le chaînage
+     * Méthodes magiques qui retournent $this pour le chaînage.
      */
     private const MAGIC_METHODS = [
         'if',
@@ -37,7 +34,7 @@ class AtoumDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtensio
     public function getClass(): string
     {
         // S'applique à toutes les classes de test atoum
-        return \mageekguy\atoum\test::class;
+        return \atoum\atoum\test::class;
     }
 
     public function isMethodSupported(MethodReflection $methodReflection): bool
@@ -48,12 +45,11 @@ class AtoumDynamicReturnTypeExtension implements DynamicMethodReturnTypeExtensio
     public function getTypeFromMethodCall(
         MethodReflection $methodReflection,
         MethodCall $methodCall,
-        Scope $scope
+        Scope $scope,
     ): Type {
         // Retourne le type de l'objet appelant (pour le chaînage)
         $callerType = $scope->getType($methodCall->var);
-        
+
         return $callerType;
     }
 }
-

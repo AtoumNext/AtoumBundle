@@ -1,9 +1,9 @@
 AtoumBundle
 ===========
 
-[![Build Status](https://secure.travis-ci.org/atoum/AtoumBundle.png)](http://travis-ci.org/atoum/AtoumBundle)
+[![Build Status](https://secure.travis-ci.org/AtoumNext/AtoumBundle.png)](http://travis-ci.org/AtoumNext/AtoumBundle)
 
-This bundle provides a (very) simple integration of [atoum](https://github.com/atoum/atoum), the simple, modern and intuitive unit testing framework for PHP, into Symfony.
+This bundle provides a (very) simple integration of [atoum](https://github.com/AtoumNext/atoum), the simple, modern and intuitive unit testing framework for PHP, into Symfony.
 
 **Version 3.0+** requires **Symfony 7+** and **PHP 8.1+**.
 
@@ -14,7 +14,7 @@ This bundle provides a (very) simple integration of [atoum](https://github.com/a
 ```json
 {
     "require-dev": {
-        "atoum/atoum-bundle": "^3.0"
+        "atoum-next/atoum-bundle": "^3.0"
     }
 }
 ```
