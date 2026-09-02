@@ -1,4 +1,14 @@
-5.0.0 - Unreleased
+5.0.1 - Unreleased
+=====
+
+## Bugfix
+
+* Require `atoum-next/atoum ^5.0.1`, which fixes a case-sensitivity bug making
+  every test fatal with `Class "atoum\atoum\factory\builder\Closure" not found`
+  when the suite is run through Composer's class-map autoloader (e.g.
+  `bin/console atoum`). See [AtoumNext/Atoum#2](https://github.com/AtoumNext/Atoum/pull/2).
+
+5.0.0 - 2026-09-02
 =====
 
 ## Breaking Changes

@@ -22,7 +22,7 @@
         "symfony/finder": "^7.4 || ^8.0",
         "symfony/dom-crawler": "^7.4 || ^8.0",
         "symfony/css-selector": "^7.4 || ^8.0",
-        "atoum-next/atoum": "^5.0",
+        "atoum-next/atoum": "^5.0.1",
         "fakerphp/faker": "^1.23",
         "ext-dom": "*"
     },
