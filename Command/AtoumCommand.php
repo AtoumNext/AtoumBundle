@@ -114,6 +114,7 @@ class AtoumCommand extends Command
 
                 if (empty($bundleDirectories)) {
                     $output->writeln(sprintf('<error>There is no test found on "%s".</error>', $bundle->getName()));
+
                     continue;
                 }
 
@@ -211,7 +212,7 @@ class AtoumCommand extends Command
 
     /**
      * Return inlined atoum cli arguments.
-     * 
+     *
      * @return array<int, string|int>
      */
     protected function getAtoumArguments(): array
@@ -265,14 +266,16 @@ class AtoumCommand extends Command
             if (null === $bundleConfig) {
                 throw new \LogicException(sprintf('Bundle configuration for "%s" should not be null.', $bundle->getName()));
             }
+
             return $bundleConfig;
         }
-        
+
         return new BundleConfiguration($bundle->getName(), $this->getDefaultDirectoriesForBundle($bundle));
     }
 
     /**
      * @param BundleInterface $bundle bundle
+     *
      * @return array<string>
      */
     public function getDefaultDirectoriesForBundle(BundleInterface $bundle): array

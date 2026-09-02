@@ -22,7 +22,7 @@ return RectorConfig::configure()
         __DIR__.'/coverage',
     ])
     ->withPhpSets(
-        php80: true,
+        php82: true,
     )
     ->withSets([
         SetList::CODE_QUALITY,
@@ -30,7 +30,6 @@ return RectorConfig::configure()
         SetList::EARLY_RETURN,
         SetList::TYPE_DECLARATION,
         SetList::PRIVATIZATION,
-        SymfonySetList::SYMFONY_70,
         SymfonySetList::SYMFONY_CODE_QUALITY,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
     ])
@@ -40,8 +39,9 @@ return RectorConfig::configure()
         codingStyle: true,
         typeDeclarations: true,
         privatization: true,
+        instanceOf: true,
         earlyReturn: true,
-        strictBooleans: true,
+        symfonyCodeQuality: true,
     )
     ->withImportNames(
         importNames: true,

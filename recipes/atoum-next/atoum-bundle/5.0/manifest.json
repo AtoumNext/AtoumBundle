@@ -1,0 +1,25 @@
+{
+    "bundles": {
+        "atoum\\AtoumBundle\\AtoumAtoumBundle": ["dev", "test"]
+    },
+    "copy-from-recipe": {
+        "config/": "%CONFIG_DIR%/",
+        ".atoum.php": ".atoum.php"
+    },
+    "gitignore": [
+        "/.atoum.php"
+    ],
+    "post-install-output": [
+        "<bg=blue;fg=white>              </>",
+        "<bg=blue;fg=white> AtoumBundle  </>",
+        "<bg=blue;fg=white>              </>",
+        "",
+        "This bundle is now published as <info>atoum-next/atoum-bundle</> and runs on",
+        "<info>atoum-next/atoum</> (the community-driven continuation of atoum).",
+        "",
+        "  * Review <comment>.atoum.php</> at the project root and adjust the test directories.",
+        "  * Run your tests with <comment>php bin/console atoum --directory=tests</>.",
+        "",
+        "Docs: <comment>https://github.com/AtoumNext/AtoumBundle</>"
+    ]
+}

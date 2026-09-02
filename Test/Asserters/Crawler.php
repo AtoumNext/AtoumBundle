@@ -7,11 +7,9 @@ use atoum\atoum\asserters;
 class Crawler extends asserters\phpObject
 {
     /**
-     * @param bool $checkType
-     *
      * @return $this
      */
-    public function setWith(mixed $value, $checkType = true)
+    public function setWith(mixed $value, bool $checkType = true): static
     {
         parent::setWith($value, $checkType);
 

@@ -39,9 +39,6 @@ class Element extends Crawler
         return $this;
     }
 
-    /**
-     * @return Crawler|null
-     */
     public function getParent(): ?Crawler
     {
         return $this->parent;
@@ -96,11 +93,9 @@ class Element extends Crawler
     }
 
     /**
-     * @param string|null $failMessage
-     *
      * @return $this
      */
-    public function isEmpty($failMessage = null)
+    public function isEmpty(?string $failMessage = null): static
     {
         return $this
             ->hasNoContent()
@@ -128,9 +123,6 @@ class Element extends Crawler
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getContent(): ?string
     {
         return $this->content;
@@ -312,9 +304,6 @@ class Element extends Crawler
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getExactly(): ?int
     {
         return $this->exactly;
@@ -356,9 +345,6 @@ class Element extends Crawler
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getAtLeast(): ?int
     {
         return $this->atLeast;
@@ -400,9 +386,6 @@ class Element extends Crawler
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getAtMost(): ?int
     {
         return $this->atMost;

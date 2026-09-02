@@ -1,3 +1,44 @@
+5.0.0 - Unreleased
+=====
+
+## Breaking Changes
+
+* Package renamed from `atoum/atoum-bundle` to `atoum-next/atoum-bundle`
+* Now depends on `atoum-next/atoum` (`^5.0`) instead of the archived `atoum/atoum`
+* Minimum requirements raised: **PHP 8.2+**, **Symfony 7.4 or 8.0+**
+  (`symfony/*` constraints are now `^7.4 || ^8.0` instead of the unbounded `>=7`)
+* Symfony Flex recipes moved to `recipes/atoum-next/atoum-bundle/` (new `5.0` recipe)
+
+The PHP namespace of the bundle is unchanged (`atoum\AtoumBundle\`), mirroring
+`atoum-next/atoum` which keeps the `atoum\atoum\` namespace and only `replace`s
+the former `atoum/atoum` / `mageekguy/atoum` packages.
+
+## Symfony 8 compatibility
+
+* `DependencyInjection\AtoumExtension` now loads services from
+  `Resources/config/services/configuration.php` via `PhpFileLoader`; the XML
+  loader (`configuration.xml` / `XmlFileLoader`) was removed as it no longer
+  exists in `symfony/dependency-injection` 8.
+* `Test\Units\CommandTestCase` uses `Application::addCommand()` instead of the
+  removed `Application::add()`.
+
+## atoum-next 5 compatibility
+
+* Return types added to method overrides to match the now fully typed atoum API:
+  `Test\Units\Test::setAssertionManager()`, `Test\Asserters\Crawler::setWith()`,
+  `Test\Asserters\Response::setWith()`, `Test\Asserters\Element::isEmpty()`.
+* `phpstan/AtoumDynamicReturnTypeExtension` now targets `atoum\atoum\test`
+  (the `mageekguy\atoum` alias is gone in atoum-next 5).
+* `Scripts\Runner::loop()` null-guards the now-nullable `$cli` / `$argumentsParser`.
+
+## Tooling
+
+* GitHub Actions CI (`.github/workflows/ci.yml`) replaces the obsolete
+  `.travis.yml`: atoum suite on PHP 8.2–8.5 × Symfony 7.4/8.0 (highest & lowest),
+  plus PHPStan and PHP-CS-Fixer jobs.
+* PHPStan bumped to `^2.1` + `phpstan/phpstan-symfony ^2.0` (Symfony 8 aware);
+  analysis is clean at level 8. Rector config updated for `rector/rector` 2.x.
+
 3.0.0 - 2025-10-14
 =====
 

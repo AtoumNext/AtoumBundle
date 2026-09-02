@@ -22,8 +22,8 @@ class AtoumExtension extends Extension
 
         $config = $processor->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
-        $loader->load('configuration.xml');
+        $loader = new Loader\PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
+        $loader->load('configuration.php');
 
         $container->setParameter('atoum.bundles', $config['bundles']);
     }

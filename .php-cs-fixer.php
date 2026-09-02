@@ -16,7 +16,7 @@ return $config
     ->setRules([
         '@PSR12' => true,
         '@Symfony' => true,
-        '@PHP80Migration' => true,
+        '@PHP82Migration' => true,
         'array_syntax' => ['syntax' => 'short'],
         'ordered_imports' => ['sort_algorithm' => 'alpha'],
         'no_unused_imports' => true,

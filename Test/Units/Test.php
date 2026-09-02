@@ -5,7 +5,6 @@ namespace atoum\AtoumBundle\Test\Units;
 use atoum\atoum;
 use Faker;
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
@@ -34,7 +33,7 @@ abstract class Test extends atoum\test
     /**
      * @return $this
      */
-    public function setAssertionManager(?atoum\test\assertion\manager $assertionManager = null)
+    public function setAssertionManager(?atoum\test\assertion\manager $assertionManager = null): static
     {
         $self = $this;
 
@@ -93,8 +92,10 @@ abstract class Test extends atoum\test
             $this->class = $this->getKernelClass();
         }
 
-        /** @var KernelInterface */
-        return new $this->class(
+        /** @var class-string<KernelInterface> $class */
+        $class = $this->class;
+
+        return new $class(
             $options['environment'] ?? 'test',
             $options['debug'] ?? true,
         );
@@ -145,8 +146,6 @@ abstract class Test extends atoum\test
 
     /**
      * return Kernel.
-     *
-     * @return KernelInterface
      */
     public function getKernel(): KernelInterface
     {
